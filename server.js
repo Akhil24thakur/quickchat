@@ -13,7 +13,16 @@ const io = new Server(server, {
 
 /* ================= STATIC FILES ================= */
 
-app.use(express.static(path.join(__dirname, 'public')));
+// Set proper MIME types for static files
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    } else if (path.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
 app.use(express.json());
 
 /* ================= DATABASE (memory) ================= */

@@ -412,8 +412,13 @@ body {
   backdrop-filter: blur(2px);
   opacity: 0;
   transition: opacity .25s;
+  pointer-events: none;
 }
-.sidebar-backdrop.show { opacity: 1; }
+.sidebar-backdrop.show {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* Online dot animation */
 .online-dot {
@@ -605,14 +610,22 @@ body {
   .sidebar.open {
     transform: translateX(0);
   }
-  .sidebar-backdrop { display: block; }
 
   /* Show mobile menu button & close button */
   .mobile-menu-btn { display: flex; }
   .sidebar-close   { display: flex; }
 
-  /* Hide header copy btn (it's in sidebar) */
-  .header-copy-btn { display: none; }
+  /* Keep copy button visible on mobile - it's more accessible in header */
+  .header-copy-btn {
+    display: flex;
+    font-size: 11px;
+    padding: 5px 10px;
+    min-height: 32px;
+  }
+
+  /* Ensure input area stays above backdrop */
+  .chat-input-wrap { position: relative; z-index: 10; }
+  .chat-main { position: relative; z-index: 1; }
 
   /* Messages take full width */
   .msg-wrap { max-width: 88%; }
