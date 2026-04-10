@@ -1,9 +1,10 @@
 const express = require('express');
+app.use(express.static("public"));
 const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
 const { customAlphabet } = require('nanoid');
-app.use(express.static("public"));
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
