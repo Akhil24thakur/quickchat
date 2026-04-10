@@ -337,7 +337,6 @@ setInterval(()=>{
   }
 
 },3600*1000);
-
 /* ================= START ================= */
 
 const PORT =
@@ -349,5 +348,4 @@ server.listen(PORT,()=>{
     "🚀 QuickChat running on port",
     PORT
   );
-
 });
